@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit{
 
-  user : User;
+  user! : User;
 
   ngOnInit(): void {
   }
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit{
         console.log(data);
 
         this.loginService.loginUser(data.token);
-        this.loginService.getCurrentUser().subscribe((user: User) => {
+        this.loginService.getCurrentUser().subscribe((user: any) => {
           this.loginService.setUser(user)
           console.log(user);
 

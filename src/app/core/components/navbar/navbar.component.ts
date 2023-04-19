@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit{
 
   title: string = "SMGT"
   isLoggedIn = false;
-  user: User;
+  user!: User;
 
   constructor(public login:LoginService, private router: Router) {
   }
