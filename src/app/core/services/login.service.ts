@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../shared/environments/environment';
 
 @Injectable({
@@ -41,8 +41,7 @@ export class LoginService {
     return true;
   }
 
-   //obtenemos el token
-   public getToken() {
+  public getToken() {
     return localStorage.getItem('token');
   }
 

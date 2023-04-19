@@ -38,11 +38,40 @@ export class LoginComponent implements OnInit{
       })
       return;
     }
+    this.loginService.generateToken(this.user).subscribe(
+      (data: any) => {
+        console.log(data);
 
+        this.loginService.loginUser(data.token);
+        this.loginService.getCurrentUser().subscribe((user: User) => {
+          this.loginService.setUser(user)
+          console.log(user);
+
+          const perm = this.loginService.getUserRole();
+
+          if (perm == "ADMIN") {
+            this.permissionsService.loadPermissions([perm]);
+            this.router.navigate(['signup'])
+            this.loginService.loginStatusSubject.next(true);
+
+
+          } else if (perm == "NORMAL") {
+
+            this.permissionsService.loadPermissions([perm]);
+            this.router.navigate([''])
+            this.loginService.loginStatusSubject.next(true);
+
+          } else {
+            this.loginService.logout();
+          }
+        })
+      }, (error) => {
+        console.log(error);
+        this.snack.open('The parameters are incorrect, please try again', 'Accept',
+          {duration: 3000},
+        )
+      }
+    )
     
-
   }
-
-
-
 }

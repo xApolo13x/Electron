@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-
+import { SignupComponent } from './components/signup/signup.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,8 +20,8 @@ import { FormsModule } from '@angular/forms';
        NavbarComponent,
        FooterComponent,
        LoginComponent,
-   
-       
+       SignupComponent,
+          
   ],
   imports: [
     CommonModule,
@@ -29,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSnackBarModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    
+    
 
   ],
   exports: [ShellComponent

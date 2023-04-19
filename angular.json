@@ -28,12 +28,12 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "src/assets/scss/bootstrap.min.scss",
-              "src/assets/scss/sweetalert.min.scss",
               "src/assets/scss/angular.material.css2.scss",
+              "src/assets/scss/angular.material.icons.scss",
               "src/assets/scss/angular.material.icons.scss"
+
             ],
-            "scripts": ["src/assets/js/bootstrap.bundle.min.js",
-            "src/assets/js/sweetalert.min.js"]
+            "scripts": ["src/assets/js/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {
