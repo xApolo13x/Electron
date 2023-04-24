@@ -12,6 +12,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
+import { authInterceptorServiceProviders } from './interceptors/auth.interceptor.service';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { RouterModule } from '@angular/router';
     
 
   ],
+  providers: [authInterceptorServiceProviders],
   exports: [ShellComponent
+    
   ]
 })
 export class CoreModule { }

@@ -56,9 +56,8 @@ export class LoginComponent implements OnInit{
 
 
           } else if (perm == "NORMAL") {
-
             this.permissionsService.loadPermissions([perm]);
-            this.router.navigate([''])
+            this.router.navigate(['signup'])
             this.loginService.loginStatusSubject.next(true);
 
           } else {
