@@ -44,12 +44,14 @@ export class SignupComponent implements OnInit {
       }
     )
   }
-
+  
   openSnackBar() {
     const config = new MatSnackBarConfig()
     config.panelClass = ['white-snackbar'];
-    config.duration = 5000;
-    this.snack.open('User Saved: User successfully registered in the system', 'Close', config);
+    this.snack.open('User Saved: User successfully registered in the system', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
   }
 
 }
