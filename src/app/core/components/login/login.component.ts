@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { User } from '../../models/user';
 import { NgxPermissionsService } from 'ngx-permissions';
 import {Router} from '@angular/router';
+import { permissions } from 'src/app/shared/permissions/permissions';
 
 @Component({
   selector: 'app-login',
@@ -49,15 +50,15 @@ export class LoginComponent implements OnInit{
 
           const perm = this.loginService.getUserRole();
 
-          if (perm == "ADMIN") {
+          if (perm == permissions.admin) {
             this.permissionsService.loadPermissions([perm]);
             this.router.navigate(['signup'])
             this.loginService.loginStatusSubject.next(true);
 
 
-          } else if (perm == "NORMAL") {
+          } else if (perm == permissions.operator) {
             this.permissionsService.loadPermissions([perm]);
-            this.router.navigate(['signup'])
+            this.router.navigate([''])
             this.loginService.loginStatusSubject.next(true);
 
           } else {

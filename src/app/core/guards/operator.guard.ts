@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NormalGuard implements CanActivate {
+export class OperatorGuard {
 
   constructor(private loginService:LoginService,private router:Router){
 
@@ -15,7 +15,7 @@ export class NormalGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.loginService.isLoggedIn() && this.loginService.getUserRole() == 'NORMAL'){
+    if(this.loginService.isLoggedIn() && this.loginService.getUserRole() == 'OPERATOR'){
       return true;
     }
 

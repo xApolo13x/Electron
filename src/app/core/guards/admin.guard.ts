@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AdminGuard {
 
   constructor(private loginService:LoginService,private router:Router){
 
