@@ -1,0 +1,12 @@
+.example-spacer{
+    flex: 1 1 auto;
+  }
+
+.navbar-nav .nav-link i {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .navbar {
+    height: 10% !important;
+  }

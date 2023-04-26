@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { authInterceptorServiceProviders } from './interceptors/auth.interceptor.service';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { authInterceptorServiceProviders } from './interceptors/auth.interceptor
        FooterComponent,
        LoginComponent,
        SignupComponent,
+       HomeComponent,
           
   ],
   imports: [
