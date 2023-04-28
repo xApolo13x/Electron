@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit{
   isLoggedIn = false;
   user!: User;
 
+
   constructor(public login:LoginService, private router: Router) {
   }
 
@@ -32,7 +33,7 @@ export class NavbarComponent implements OnInit{
   public logout() {
     this.login.logout();
     this.router.navigate([''])
-
+    location.reload();
   }
   
 }

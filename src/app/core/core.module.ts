@@ -14,6 +14,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { authInterceptorServiceProviders } from './interceptors/auth.interceptor.service';
 import { HomeComponent } from './components/home/home.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HomeComponent } from './components/home/home.component';
        LoginComponent,
        SignupComponent,
        HomeComponent,
+       
           
   ],
   imports: [
@@ -35,6 +37,7 @@ import { HomeComponent } from './components/home/home.component';
     MatCardModule,
     FormsModule,
     RouterModule,
+    NgxPermissionsModule.forRoot()
     
     
 

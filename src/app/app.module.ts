@@ -21,10 +21,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CoreModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPermissionsModule.forRoot()
-
-    
-    
+    NgxPermissionsModule.forRoot(),
   ],
  
   bootstrap: [AppComponent]

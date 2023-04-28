@@ -1,11 +1,25 @@
 <nav class="navbar navbar-light" style="background-color: #2f658b;">
-  <div class="container-fluid">
-    <a class="navbar-brand" style="color: rgb(43, 13, 71)" href="#">{{title}}</a>
+  <div class="container-fluid d-flex justify-content-between">
+    <div>
+      <a class="navbar-brand" style="color: rgb(43, 13, 71)" href="#">{{title}}</a>
+      <div class="dropdown" *ngxPermissionsOnly="['ADMIN']" routerLinkActive="active" style="float: right;">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          User Management
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" routerLink="/signup">Add user</a></li>
+        </ul>
+      </div>
+    </div>
 
     <ul class="navbar-nav flex-row align-items-center">
       <li class="nav-item" *ngIf="login.isLoggedIn()">
         <a class="nav-link" (click)="logout()" style="cursor:pointer;">
-          <i class="bi bi-box-arrow-left" style="font-size: 1.5rem;" ></i>
+          <i class="bi bi-box-arrow-left" style="font-size: 1.5rem;"></i>
         </a>
       </li>
       <li class="nav-item" *ngIf="login.isLoggedIn()">
