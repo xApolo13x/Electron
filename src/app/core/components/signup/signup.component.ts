@@ -12,17 +12,15 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 })
 export class SignupComponent implements OnInit {
 
-  user!: User;
+  user: User = new User();
 
   constructor(private userService: UserService, private snack: MatSnackBar) {
-    this.user = new User();
   }
 
   ngOnInit(): void { }
 
   formSubmit() {
-    console.log(this.user);
-    if (this.user.username == '' || this.user.username == null) {
+    if (!this.user.username) {
       this.snack.open('The username is required !!', 'Accept', {
         duration: 3000,
         verticalPosition: 'top',
@@ -30,19 +28,19 @@ export class SignupComponent implements OnInit {
       });
       return;
     }
-
-    this.userService.addUser(this.user).subscribe(
-      (data) => {
-        console.log(data);
+  
+    this.userService.addUser(this.user).subscribe({
+      next: (data) => {
         this.openSnackBar();
-      }, (error) => {
+      },
+      error: (error) => {
         console.log(error);
         this.snack.open('The user already exists!!', 'OK', {
           duration: 3000,
           verticalPosition: 'top',
         });
       }
-    )
+    });
   }
   
   openSnackBar() {

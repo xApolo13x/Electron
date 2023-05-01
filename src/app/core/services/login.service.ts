@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../shared/environments/environment';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  //generate token
   public generateToken(loginData: any) {
     return this.http.post(`${environment.apiUrl}/api/generate-token`, loginData);
   }
@@ -45,7 +45,7 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  public setUser(user: any) {
+  public setUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 

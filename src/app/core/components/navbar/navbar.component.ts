@@ -13,15 +13,14 @@ export class NavbarComponent implements OnInit{
 
   title: string = "SMGT"
   isLoggedIn = false;
-  user!: User;
-
+  user: User = new User();
 
   constructor(public login:LoginService, private router: Router) {
+    this.user = this.login.getUser();
   }
 
   ngOnInit(): void {
     this.isLoggedIn = this.login.isLoggedIn();
-    this.user = this.login.getUser();
     this.login.loginStatusSubject.asObservable().subscribe(
       data => {
         this.isLoggedIn = this.login.isLoggedIn();
@@ -33,7 +32,6 @@ export class NavbarComponent implements OnInit{
   public logout() {
     this.login.logout();
     this.router.navigate([''])
-    location.reload();
   }
   
 }

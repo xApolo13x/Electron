@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent, pathMatch: 'full'},
   {path: 'signup', component: SignupComponent, canActivate:[AdminGuard]},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate:[AdminGuard]},
+  {path: 'home', component: HomeComponent, pathMatch: 'full'},
 
 ];
 
