@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 
 @Component({
@@ -15,11 +16,13 @@ export class NavbarComponent implements OnInit{
   isLoggedIn = false;
   user: User = new User();
 
-  constructor(public login:LoginService, private router: Router) {
-    this.user = this.login.getUser();
+
+  constructor(public login:LoginService, private router: Router, private permissionsService: NgxPermissionsService) {
+    this.user = this.login.getUser()
   }
 
   ngOnInit(): void {
+
     this.isLoggedIn = this.login.isLoggedIn();
     this.login.loginStatusSubject.asObservable().subscribe(
       data => {
@@ -27,11 +30,14 @@ export class NavbarComponent implements OnInit{
         this.user = this.login.getUser();
       }
     )
+
+    const perm = this.login.getUserRole();
+    this.permissionsService.loadPermissions([perm]);
   }
 
   public logout() {
     this.login.logout();
-    this.router.navigate([''])
+    location.href = '' 
   }
   
 }
