@@ -4,11 +4,9 @@
     bottom: 0px;
     height: 50px;
     width: 100%; 
-    z-index: 9999;
-    background-color: #2f658b;;
-     
+    z-index: 9999;   
 }
 
 .footer-text {
-    color: rgb(43, 13, 71);
+    color: rgb(255, 255, 255);
   }

@@ -14,12 +14,12 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  public generateToken(loginData: any) {
-    return this.http.post(`${environment.apiUrl}/api/generate-token`, loginData);
+  public generateToken(user: User) {
+    return this.http.post(`${environment.apiUrl}/api/generate-token`, user);
   }
 
   //login and set the token in the localStorage
-  public loginUser(token: any) {
+  public loginUser(token: string) {
     localStorage.setItem('token', token);
     return true;
   }

@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #ebedf0 !important;
+  background-color: #ececec !important;
 }
 
 .text-center{
@@ -62,5 +62,26 @@ body {
     background-color: white !important;
     color: black !important;
   }
+
+  /* general colors styles for Aplication*/
+  .standar-red 
+  {
+    color: #f95959 !important;
+  }
+
+  .standar-blue
+  {
+    background-color: #142d4c!important;
+  }
+
+  .standar-white-tetx
+  {
+    color: rgb(255, 255, 255)!important;
+  }
+
+  .my-icon {
+    color: white!important;
+  }
+
 
   

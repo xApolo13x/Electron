@@ -45,13 +45,13 @@ export class LoginComponent {
           this.loginService.logout();
         }
       }),
-      catchError((error: any) => {
+      catchError((error: Error) => {
         const errorMessage = 'An error occurred while getting user data';
         this.snack.open(errorMessage, 'Accept', {
           duration: 3000,
           verticalPosition: 'top'
         });
-        throw new Error(errorMessage);
+        throw new Error(errorMessage + error);
       })
     ).subscribe();
   }
