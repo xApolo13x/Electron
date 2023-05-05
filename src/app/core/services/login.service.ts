@@ -14,8 +14,8 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  public generateToken(user: User) {
-    return this.http.post(`${environment.apiUrl}/api/generate-token`, user);
+  public authenticateUser(user: User) {
+    return this.http.post(`${environment.apiUrl}/auth/authenticate`, user);
   }
 
   //login and set the token in the localStorage

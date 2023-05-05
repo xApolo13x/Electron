@@ -29,7 +29,7 @@ export class LoginComponent {
       return;
     }
 
-    this.loginService.generateToken(this.user).pipe(
+    this.loginService.authenticateUser(this.user).pipe(
       tap((data: any) => {
         this.loginService.loginUser(data.token);
       }),
@@ -57,7 +57,7 @@ export class LoginComponent {
   }
 
   private isFormValid(): boolean {
-    if (!this.user.username) {
+    if (!this.user.userId) {
       this.snack.open('Username is required !!', 'Accept', {
         verticalPosition: 'top',
         duration: 3000

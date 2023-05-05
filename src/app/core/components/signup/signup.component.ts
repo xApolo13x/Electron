@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void { }
 
   formSubmit() {
-    if (!this.user.username) {
+    if (!this.user.userId) {
       this.snack.open('The username is required !!', 'Accept', {
         duration: 3000,
         verticalPosition: 'top',
