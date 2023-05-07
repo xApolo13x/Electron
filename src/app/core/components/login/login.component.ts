@@ -31,7 +31,15 @@ export class LoginComponent {
 
     this.loginService.authenticateUser(this.user).pipe(
       tap((data: any) => {
-        this.loginService.loginUser(data.token);
+
+        this.loginService.loginUser(data.accessToken);
+        console.log(data.accessToken)
+        let decodedJWT = JSON.parse(window.atob(data.accessToken.split('.')[1]));
+
+        console.log('name: ' + decodedJWT.sub);
+        console.log('role: ' + decodedJWT.roles);
+        console.log(data.token)
+        
       }),
       switchMap(() => this.loginService.getCurrentUser()),
       tap((user: User) => {

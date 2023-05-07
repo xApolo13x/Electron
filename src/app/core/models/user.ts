@@ -7,9 +7,9 @@ export interface IUser {
   
   export class User implements IUser {
     constructor(
+      public id?: number,
       public userId?: string,
       public password?: string,
       public roles?: string[],
-      public id?: number
     ) {}
   }

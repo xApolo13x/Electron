@@ -19,8 +19,8 @@ export class LoginService {
   }
 
   //login and set the token in the localStorage
-  public loginUser(token: string) {
-    localStorage.setItem('token', token);
+  public loginUser(accessToken: string) {
+    localStorage.setItem('token', accessToken);
     return true;
   }
 
@@ -34,7 +34,14 @@ export class LoginService {
     }
   }
 
+// let token = localStorage.getItem('token');
+// let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+
+// console.log('name: ' + decodedJWT.name);
+// console.log('role: ' + decodedJWT.role);
+
   //We close the session and remove the token from localStorage
+  
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

@@ -1,12 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #ececec !important;
-}
-
 .text-center{
   text-align: center;
 }
@@ -64,6 +57,18 @@ body {
   }
 
   /* general colors styles for Aplication*/
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #ececec !important;
+  }
+  
+  .shadow-style {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
   .standar-red 
   {
     color: #f95959 !important;
@@ -71,7 +76,8 @@ body {
 
   .standar-blue
   {
-    background-color: #142d4c!important;
+    background: linear-gradient(to bottom, #142d4c, #142d4c 40%, #254678);
+     /* background-color: #142d4c!important; */
   }
 
   .standar-white-tetx
@@ -82,6 +88,7 @@ body {
   .my-icon {
     color: white!important;
   }
+
 
 
   
