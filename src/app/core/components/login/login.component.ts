@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { catchError, switchMap, tap } from 'rxjs/operators';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../models/user';
 import { permissions } from 'src/app/shared/permissions/permissions';
@@ -21,7 +20,7 @@ export class LoginComponent {
     private router: Router,
     private permissionsService: NgxPermissionsService
   ) {
-    
+
   }
 
   formSubmit() {
@@ -29,39 +28,31 @@ export class LoginComponent {
       return;
     }
 
-    this.loginService.authenticateUser(this.user).pipe(
-      tap((data: any) => {
+    this.loginService.authenticateUser(this.user).subscribe({
 
+      next: (data: any) => {
         this.loginService.loginUser(data.accessToken);
-        console.log(data.accessToken)
-        let decodedJWT = JSON.parse(window.atob(data.accessToken.split('.')[1]));
+        this.loginService.setUser(this.user);
 
-        console.log('name: ' + decodedJWT.sub);
-        console.log('role: ' + decodedJWT.roles);
-        console.log(data.token)
-        
-      }),
-      switchMap(() => this.loginService.getCurrentUser()),
-      tap((user: User) => {
-        this.loginService.setUser(user);
         const perm = this.loginService.getUserRole();
-        if (perm == permissions.admin || perm === permissions.operator) {
+
+        if (perm == permissions.admin || perm == permissions.operator) {
           this.permissionsService.loadPermissions([perm]);
           this.router.navigate(['home']);
           this.loginService.loginStatusSubject.next(true);
         } else {
           this.loginService.logout();
         }
-      }),
-      catchError((error: Error) => {
-        const errorMessage = 'An error occurred while getting user data';
+      },
+      error: (error) => {
+        const errorMessage = 'The username or password is incorrect';
         this.snack.open(errorMessage, 'Accept', {
           duration: 3000,
           verticalPosition: 'top'
         });
-        throw new Error(errorMessage + error);
-      })
-    ).subscribe();
+        console.error(errorMessage, error);
+      }
+    });
   }
 
   private isFormValid(): boolean {

@@ -18,15 +18,15 @@ export class LoginService {
     return this.http.post(`${environment.apiUrl}/auth/authenticate`, user);
   }
 
-  //login and set the token in the localStorage
+  //login and set the token in the sessionStorage
   public loginUser(accessToken: string) {
-    localStorage.setItem('token', accessToken);
+    sessionStorage.setItem('token', accessToken);
     return true;
   }
 
   //check the token
   public isLoggedIn() {
-    let tokenStr = localStorage.getItem('token');
+    let tokenStr = sessionStorage.getItem('token');
     if (tokenStr == undefined || tokenStr == '' || tokenStr == null) {
       return false;
     } else {
@@ -34,30 +34,22 @@ export class LoginService {
     }
   }
 
-// let token = localStorage.getItem('token');
-// let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
-
-// console.log('name: ' + decodedJWT.name);
-// console.log('role: ' + decodedJWT.role);
-
-  //We close the session and remove the token from localStorage
-  
   public logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     return true;
   }
 
   public getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   public setUser(user: User) {
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   public getUser() {
-    let userStr = localStorage.getItem('user');
+    let userStr = sessionStorage.getItem('user');
     if (userStr != null) {
       return JSON.parse(userStr);
     } else {
@@ -67,12 +59,16 @@ export class LoginService {
   }
 
   public getUserRole() {
-    let user = this.getUser();
-    return user.authorities[0].authority;
-  }
+    const token = this.getToken();
 
-  public getCurrentUser() {
-    return this.http.get(`${environment.apiUrl}/api/current-user`);
-  }
+    if (token) {
+      const decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+      const perm = decodedJWT.roles;
+      return perm;
 
+    } else {
+      console.log("An error occurred while retrieving user role. Please try again later or contact support.")
+      return null;
+    }
+  }
 }
