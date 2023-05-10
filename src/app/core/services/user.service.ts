@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/app/shared/environments/environment';
+import { User } from '../models/user';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 
 @Injectable({
@@ -11,7 +14,12 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public addUser(user: any) {
-    return this.httpClient.post(`${environment.apiUrl}/api/users`, user);
+  public createUser(user: User) {
+    return this.httpClient.post(`${environment.apiUrl}/user`, user);
   }
+
+  public getListUser(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${environment.apiUrl}/user`);
+  }
+
 }

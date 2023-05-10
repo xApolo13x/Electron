@@ -2,7 +2,7 @@ export interface IUser {
     id?: number;
     userId?: string;
     password?: string;
-    roles?: string[];
+    role?: string[];
   }
   
   export class User implements IUser {
@@ -10,6 +10,6 @@ export interface IUser {
       public id?: number,
       public userId?: string,
       public password?: string,
-      public roles?: string[],
+      public role?: string[],
     ) {}
   }

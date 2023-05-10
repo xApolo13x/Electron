@@ -10,11 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { authInterceptorServiceProviders } from './interceptors/auth.interceptor.service';
 import { HomeComponent } from './components/home/home.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { TableUserComponent } from './components/userManagement/table-user/table-user.component';
+import { RegisterFormComponent } from './components/userManagement/register-form/register-form.component';
 
 
 @NgModule({
@@ -23,8 +24,9 @@ import { NgxPermissionsModule } from 'ngx-permissions';
        NavbarComponent,
        FooterComponent,
        LoginComponent,
-       SignupComponent,
        HomeComponent,
+       TableUserComponent,
+       RegisterFormComponent,
        
           
   ],
